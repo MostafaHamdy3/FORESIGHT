@@ -39,7 +39,7 @@ const Login = ({ navigation }) => {
   //       console.log(err);
   //     }
   //   };
-    
+
   //   checkLoginStatus();
   // }, []);
 
@@ -63,6 +63,7 @@ const Login = ({ navigation }) => {
       setIsLoading(false);
     }
   };
+  console.log("SignIn:", signInFailed)
 
   return (
     <View style={styles.container}>
@@ -99,13 +100,9 @@ const Login = ({ navigation }) => {
           // onUpdateValue={updateInputValueHandler.bind(this, 'password')}
           // isInvalid={passwordIsInvalid}
         />
-        <View>
-          {signInFailed && (
-            <Text style={styles.validation}>
-              {/* {i18n.t(this.props.signinFailed)} */}
-            </Text>
-          )}
-        </View>
+        {signInFailed && (
+          <Text style={styles.validation}>Email or password are wrong!</Text>
+        )}
       </View>
 
       <View style={styles.checkedContent}>
@@ -166,9 +163,8 @@ const styles = StyleSheet.create({
   },
   validation: {
     color: Colors.error,
-    marginTop: 10,
-    textAlign: "right",
-    alignSelf: "flex-end",
+    marginVertical: 6,
+    marginLeft: 4,
     fontSize: 12,
   },
 });

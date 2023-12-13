@@ -8,13 +8,16 @@ import {
 
 import { Colors } from "../constants/config";
 
-function Button({ children, onPress, backgroundColor }) {
+function Button({ children, onPress, backgroundColor, disabled }) {
   return (
     <TouchableOpacity
       style={[styles.button, { backgroundColor: backgroundColor }]}
       onPress={onPress}
+      disabled={disabled}
     >
-      <Text style={styles.buttonText}>{children}</Text>
+      <Text style={styles.buttonText}>
+        {children}
+      </Text>
     </TouchableOpacity>
   );
 }
@@ -37,8 +40,8 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     textAlign: "center",
-    color: Colors.white,
     fontSize: 16,
     fontWeight: "bold",
+    color: Colors.white
   },
 });

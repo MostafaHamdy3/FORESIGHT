@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { Colors } from "../constants/config";
 import Search from "../components/Search";
@@ -16,8 +16,7 @@ import Indicator from './../components/Indicator';
 
 const Manager = ({ navigation }) => {
   const dispatch = useDispatch();
-
-  const [users, setUsers] = useState([]);
+  const users = useSelector((state) => state.user.users);
   const [isLoading, setIsLoading] = useState(false);
 
   const deleteUserHandler = async () => {
@@ -37,15 +36,15 @@ const Manager = ({ navigation }) => {
     });
   };
 
-  const getAllUsers = async () => {
-    try {
-      const result = await dispatch(getUsers());
-      setUsers(result);
-    } catch (err) {
-      console.log("getAllUsers ==>", err)
-    }
-  };
-  getAllUsers();
+  dispatch(getUsers());
+  // const getAllUsers = async () => {
+  //   try {
+  //     await dispatch(getUsers());
+  //   } catch (err) {
+  //     console.log("getAllUsers ==>", err)
+  //   }
+  // };
+  // getAllUsers();
 
   return (
     <View style={styles.container}>

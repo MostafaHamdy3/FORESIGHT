@@ -1,34 +1,20 @@
 import axios from "axios";
-import { GET_USERS } from "./actionTypes";
-
+import * as actions from "./actionTypes";
 import { baseUrl } from "../../constants/config";
 
 export const setUsers = payload => ({
-  type: action.GET_USERS,
+  type: actions.GET_USERS,
   payload,
 });
 
-export const getUsers = async () => async (dispatch, getState) => {
+export const getUsers = () => async (dispatch, getState) => {
   try {
-    dispatch(setUsers([]));
     const response = await axios.get(`${baseUrl}/users`);
     dispatch(setUsers(response.data || []));
   } catch (error) {
-    console.log("getUsers ERROR ==>", err);
-    // dispatch(fetchUsersFailure(error.message));
+    console.log("getUsers ERROR ==>", error);
   }
-  return null;
 };
-
-// export async function getUsers() {
-//   try {
-//     const response = await axios.get(`${baseUrl}/users`);
-//     return response.data;
-//   } catch (err) {
-//     console.log("getUsers ERROR ==>", err);
-//     return false;
-//   }
-// }
 
 export async function addNewUser(userData) {
   try {

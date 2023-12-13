@@ -7,7 +7,6 @@ import { baseUrl } from "../../constants/config";
 export const verifyLogIn = (authData, isRememberMe) => async dispatch => {
   try {
     const response = await axios.post(`${baseUrl}/login`, authData)
-    console.log("Response:", response)
     const token = response.data.token;
     AsyncStorage.setItem("authToken", token);
     AsyncStorage.setItem("isRemember", isRememberMe.toString());

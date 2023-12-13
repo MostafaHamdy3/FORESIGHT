@@ -16,7 +16,6 @@ import { addNewUser, editUserDetails } from "../../store/actions/Users";
 import DotPulse from "../DotPluse";
 
 const ManageUser = ({ navigation, route }) => {
-
   const isEditing = route.params?.isEditing;
   const user = route.params?.user;
   const [firstName, setFirstName] = useState(isEditing ? user.firstname : "");

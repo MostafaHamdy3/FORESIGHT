@@ -5,12 +5,10 @@ import { Colors } from "../constants/config"
 function Input(props) {
   return (
     <View style={styles.inputContainer}>
-      <Text style={[styles.label, props.isInvalid && styles.labelInvalid]}>
-        {props.label}
-      </Text>
+      <Text style={styles.label}>{props.label}</Text>
       <View style={{ flexDirection: 'row' }}>
         <TextInput
-          style={[styles.input, props.isInvalid && styles.inputInvalid]}
+          style={styles.input}
           autoCapitalize="none"
           keyboardType={props.keyboardType}
           secureTextEntry={props.secure}
@@ -42,9 +40,6 @@ const styles = StyleSheet.create({
     color: Colors.black,
     marginBottom: 4,
   },
-  labelInvalid: {
-    color: Colors.error,
-  },
   input: {
     flex: 1,
     fontSize: 16,
@@ -56,9 +51,6 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     paddingHorizontal: 12,
     borderRadius: 6,
-  },
-  inputInvalid: {
-    backgroundColor: Colors.error,
   },
   iconView: {
     position: "absolute",

@@ -20,8 +20,8 @@ import DotPulse from "../components/DotPluse";
 const Login = ({ navigation }) => {
   const dispatch = useDispatch();
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("abdo@foresight.com");
+  const [password, setPassword] = useState("123456aA@");
   const [isRemember, setIsRemember] = useState(false);
   const [isSecure, setIsSecure] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
@@ -84,7 +84,6 @@ const Login = ({ navigation }) => {
           value={email}
           onUpdateValue={(text) => setEmail(text)}
           keyboardType="email-address"
-          // isInvalid={emailIsInvalid}
         />
         <Input
           label="Password"
@@ -98,7 +97,6 @@ const Login = ({ navigation }) => {
           }
           onPressRightIcon={togglePasswordVisibility}
           // onUpdateValue={updateInputValueHandler.bind(this, 'password')}
-          // isInvalid={passwordIsInvalid}
         />
         {signInFailed && (
           <Text style={styles.validation}>Email or password are wrong!</Text>
@@ -120,7 +118,8 @@ const Login = ({ navigation }) => {
       <View style={{ width: "35%", alignSelf: "center" }}>
         <Button
           onPress={() => loginHandler(email, password)}
-          backgroundColor={Colors.primary}
+          backgroundColor={ email === "" || password === "" ? Colors.dammed : Colors.primary}
+          disabled={email === "" || password === ""}
         >
           {isLoading ? <DotPulse /> : "Log In"}
         </Button>
